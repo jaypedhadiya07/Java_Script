@@ -36,3 +36,32 @@ function printName(name) {                     // Function
 // console.log(typeof Heroes);   // object
 // console.log(typeof obj);      // object
 // console.log(typeof printName);// function
+
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// Primitive types => stored in Stack (copied by value)
+// Non-primitive types (objects, arrays, functions) => stored in Heap (copied by reference)
+
+// ------------------ Primitive Example (Stack) ------------------
+/*
+let Name = "jay";
+let SecondName = Name;  // Copy by value
+SecondName = "patel";   // Only SecondName changes, Name remains the same
+
+console.log(SecondName); // "patel"
+console.log(Name);       // "jay"
+*/
+
+// ------------------ Reference Example (Heap) ------------------
+/*
+let UserOne = {
+    Email: "jay@gmail.com",
+    Upi: "51@boi.in"
+};
+
+let UserTwo = UserOne;   // Copy by reference
+UserTwo.Email = "patel's.com";  // Modifies both UserTwo and UserOne
+
+console.log(UserOne.Email); // "patel's.com"
+console.log(UserTwo.Email); // "patel's.com"
+*/
