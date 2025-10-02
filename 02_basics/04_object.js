@@ -60,3 +60,33 @@ const apidata = [
 ];
 console.log(apidata[0].Name);              // yash
 console.log(YoutubeUser.hasOwnProperty("Name")); // true
+
+// ------------------ Object Destructuring ------------------
+const Course = {
+    CourseName: "javaScript",
+    CourseInstructor: "divyanshu",
+    Price: 3333
+};
+console.log(Course.CourseInstructor); // divyanshu
+
+// Destructuring with alias
+const { CourseInstructor: Teacher } = Course;
+console.log(Teacher); // divyanshu
+
+// ------------------ JSON Examples ------------------
+/*
+JSON Object:
+{
+    "Name": "jay",
+    "Age": 19,
+    "id": "123abc"
+}
+
+JSON Array:
+[
+    {},
+    {},
+    {},
+    {}
+]
+*/
