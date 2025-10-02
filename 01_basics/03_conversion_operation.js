@@ -38,3 +38,38 @@ let someNumber = 33;
 let stringNumber = String(someNumber);  // "33"
 console.log(stringNumber);              // "33"
 console.log(typeof stringNumber);       // string
+
+// *********************** Operations ***********************
+
+let value = 3;
+let negValue = -value;           // Unary negation: flips sign
+// console.log(negValue);
+
+// Basic arithmetic operations
+// console.log(2 + 2);  // Addition
+// console.log(2 - 2);  // Subtraction
+// console.log(2 * 2);  // Multiplication
+// console.log(2 ** 3); // Exponentiation (2^3)
+// console.log(2 / 3);  // Division
+// console.log(2 % 3);  // Modulus (remainder)
+
+// String concatenation
+let str1 = "hello";
+let str2 = " jay";
+
+let str3 = str1 + str2;  // Concatenate strings
+console.log(str3);        // "hello jay"
+
+// Type coercion with strings and numbers
+// "1" + 2       => "12"  (number converted to string)
+// 1 + "2"       => "12"
+// "1" + 2 + 2   => "122"
+// 1 + 2 + "2"   => "32"
+
+// Increment operator
+let gameCounter = 100;
+++gameCounter;          // Pre-increment: increases by 1
+console.log(gameCounter); // 101
+
+// Official JS abstract operations reference
+// https://tc39.es/ecma262/multipage/abstract-operations.html#sec-type-conversion
