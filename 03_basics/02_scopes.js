@@ -40,3 +40,27 @@ if (true) {
     // console.log(Website); // Error: Website is not defined (block-scoped)
 }
 // console.log(UserName); // Error: UserName is not defined (block-scoped)
+
+// ++++++++++++++++++ Important ++++++++++++++++++++
+
+
+// ------------------ Function Declaration ------------------
+// Function declarations are hoisted (moved to the top in memory),
+// so you can call them before they are defined.
+console.log(addOneValue(10)); // 11 (allowed)
+
+function addOneValue(num) {
+    return num + 1;
+}
+// console.log(addOneValue(10)); // 11 (also allowed)
+
+
+// ------------------ Function Expression ------------------
+// Function expressions are not hoisted the same way.
+// You cannot call them before initialization.
+ // console.log(addTwoValue(10)); // Error: Cannot access 'addTwoValue' before initialization
+
+const addTwoValue = function (num) {
+    return num + 2;
+};
+console.log(addTwoValue(10)); // 12 (allowed after initialization)
