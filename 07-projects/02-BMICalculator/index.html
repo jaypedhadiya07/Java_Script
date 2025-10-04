@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BMI Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+
+<body>
+  <nav>
+    <a href="../index.html" aria-current="page">Home</a>
+    <a target="_blank" href="https://www.youtube.com/@chaiaurcode">YouTube Channel</a>
+  </nav>
+
+  <div class="container">
+    <h1>BMI Calculator</h1>
+    <form id="bmi-form">
+      <div class="input-group">
+        <label for="height">Height (cm):</label>
+        <input type="number" id="height" placeholder="e.g., 170" min="0" required />
+      </div>
+      <div class="input-group">
+        <label for="weight">Weight (kg):</label>
+        <input type="number" id="weight" placeholder="e.g., 65" min="0" required />
+      </div>
+      <button type="submit">Calculate</button>
+      <div id="results"></div>
+    </form>
+
+    <div id="weight-guide">
+      <h3>BMI Weight Guide</h3>
+      <p class="highlight">Normal: 18.6 – 24.9</p>
+      <p class="highlight">Underweight: &lt; 18.6</p>
+      <p class="highlight">Overweight: &gt; 24.9</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

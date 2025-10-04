@@ -1,0 +1,111 @@
+/* Base Styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: #212121;
+  background-color: #8d544f;
+}
+
+/* Container */
+.container {
+  width: 400px;
+  max-width: 90%;
+  margin: 50px auto;
+  padding: 30px 25px;
+  background-color: #4a4a4a;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  color: #fff;
+}
+
+/* Heading */
+h1 {
+  margin-bottom: 25px;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+/* Form Elements */
+.input-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+label {
+  width: 120px;
+  text-align: left;
+  font-weight: 500;
+}
+
+input {
+  flex: 1;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: none;
+  font-size: 16px;
+}
+
+/* Button */
+button {
+  width: 100%;
+  padding: 12px;
+  font-size: 18px;
+  background-color: #ff6600;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Results */
+#results {
+  font-size: 24px;
+  margin: 20px 0;
+  color: #f1f1f1;
+  font-weight: 500;
+}
+
+/* BMI Weight Guide */
+#weight-guide {
+  margin-top: 25px;
+  font-size: 16px;
+}
+
+.highlight {
+  display: inline-block;
+  padding: 6px 12px;
+  margin: 5px 0;
+  border-radius: 6px;
+  background-color: #4a4a4a;
+  transition: background-color 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 450px) {
+  .container {
+    padding: 20px 15px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  button {
+    font-size: 16px;
+  }
+
+  #results {
+    font-size: 20px;
+  }
+}
