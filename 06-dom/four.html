@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chai aur Code | DOM</title>
+</head>
+
+<body style="background-color: #212121; color: #fff; font-family: Arial, sans-serif; padding: 20px;">
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>
+
+    <script>
+        // ------------------- Add Language using innerHTML -------------------
+        function addLanguage(langName) {
+            const li = document.createElement('li');
+            li.innerHTML = langName; // adds HTML/text content
+            document.querySelector('.language').appendChild(li);
+        }
+
+        addLanguage("Python");
+        addLanguage("TypeScript");
+
+        // ------------------- Add Language using createTextNode (more robust) -------------------
+        function addOptiLanguage(langName) {
+            const li = document.createElement('li');
+            li.appendChild(document.createTextNode(langName)); // safer than innerHTML
+            document.querySelector('.language').appendChild(li);
+        }
+
+        addOptiLanguage('Golang');
+
+        // ------------------- Edit specific language using replaceWith -------------------
+        const secondLang = document.querySelector("li:nth-child(2)");
+        console.log("Second language before replace:", secondLang.innerText);
+
+        const newLi = document.createElement('li');
+        newLi.textContent = "Mojo"; // create new li
+        secondLang.replaceWith(newLi); // replace second element
+
+        // ------------------- Edit first language using outerHTML -------------------
+        const firstLang = document.querySelector("li:first-child");
+        firstLang.outerHTML = '<li>TypeScript</li>'; // replace first element entirely
+
+        // ------------------- Remove last language -------------------
+        const lastLang = document.querySelector('li:last-child');
+        lastLang.remove(); // removes element from DOM
+
+        // ------------------- Notes -------------------
+        // innerHTML: allows adding HTML or text (can overwrite existing content)
+        // createTextNode + appendChild: safer for plain text
+        // replaceWith: replaces an element with another element
+        // outerHTML: replaces entire element including the tag itself
+        // remove: deletes the element from the DOM
+    </script>
+</body>
+
+</html>
