@@ -3,20 +3,96 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>DOM</title>
+    <title>DOM Practice</title>
+    <style>
+        .bg-black {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .heading {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
-<style>
-    .bg-black {
-        background-color: black;
-        color: white;
-    }
-</style>
 
 <body class="bg-black">
     <div>
-        <h1 class="heading">DOM</h1>
-        <p>Lorem ipsum dolor sit amet.</p>
+        <h1 id="title" class="heading">
+            DOM <span id="secondText" style="display: none;">learning</span>
+        </h1>
+
+        <!-- Multiple h2 elements -->
+        <h2>one</h2>
+        <h2>two</h2>
+        <h2>three</h2>
+
+        <!-- Input -->
+        <input type="text" placeholder="Type here..." />
+
+        <!-- Unordered list -->
+        <ul>
+            <li class="list">1</li>
+            <li class="list">2</li>
+            <li class="list">3</li>
+            <li class="list">4</li>
+        </ul>
+
+        <p>Thank you for visiting again!</p>
     </div>
+
+    <script>
+        // ------------------- DOM Selection -------------------
+
+        // Get element by ID
+        const title = document.getElementById("title");
+        console.log(title.id); // "title"
+        console.log(title.className); // "heading"
+
+        // Get attributes
+        console.log(title.getAttribute("id"));    // "title"
+        console.log(title.getAttribute("class")); // "heading"
+
+        // Set attribute (overwrites previous)
+        title.setAttribute("class", "head heading");
+
+        // ------------------- Styling -------------------
+        title.style.backgroundColor = "orange";
+        title.style.padding = "20px";
+        title.style.margin = "20px";
+        title.style.borderRadius = "20px";
+
+        // ------------------- Content -------------------
+        console.log(title.innerHTML);   // Includes inner tags
+        console.log(title.innerText);   // Visible text only (ignores display:none)
+        console.log(title.textContent); // Includes hidden text
+
+        // ------------------- Query Selectors -------------------
+        console.log(document.querySelector("#title")); // By ID
+        console.log(document.querySelector(".heading")); // By class
+
+        // First <h2>
+        document.querySelector("h2").style.backgroundColor = "green";
+
+        // ------------------- NodeList (querySelectorAll) -------------------
+        const nodelist = document.querySelectorAll("h2");
+        nodelist[2].style.color = "yellow"; // index-based access
+
+        const allLi = document.querySelectorAll("li");
+        allLi.forEach((li) => {
+            li.style.backgroundColor = "yellow";
+            li.style.color = "red";
+        });
+
+        // ------------------- HTMLCollection (getElementsByClassName) -------------------
+        const arrList = document.getElementsByClassName("list"); // HTMLCollection
+        const convertedArray = Array.from(arrList); // Convert to array
+        convertedArray.forEach((li) => {
+            li.style.color = "blue";
+        });
+    </script>
 </body>
 
 </html>
