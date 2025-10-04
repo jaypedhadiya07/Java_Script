@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Traversal</title>
+</head>
+
+<body style="background-color: black; color: aliceblue;">
+    <div class="parent">
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+    </div>
+
+    <script>
+        // ------------------- Parent Element -------------------
+        const parent = document.querySelector(".parent");
+        console.log("Parent:", parent);
+
+        // ------------------- Children -------------------
+        // children gives only element nodes (HTMLCollection)
+        console.log("First child:", parent.children[0].innerHTML);
+
+        for (let i = 0; i < parent.children.length; i++) {
+            console.log(`Child ${i}:`, parent.children[i].innerHTML);
+        }
+
+        // Styling child directly
+        parent.children[1].style.color = "pink"; // Tuesday → pink
+
+        // First & last element child
+        console.log("First element child:", parent.firstElementChild);
+        console.log("Last element child:", parent.lastElementChild);
+
+        // ------------------- Sibling Traversal -------------------
+
+        // Select the first element with class "day" (Monday)
+        const dayOne = document.querySelector(".day");
+        console.log("Selected element (dayOne):", dayOne);
+
+        // Access its parent element
+        console.log("Parent element of dayOne:", dayOne.parentElement);
+
+        // Access the next sibling element (Tuesday)
+        console.log("Next sibling of dayOne:", dayOne.nextElementSibling);
+
+        // Access the previous sibling element (if needed)
+        console.log("Previous sibling of dayOne:", dayOne.previousElementSibling); // null because it's the first child
+
+        // Notes:
+        // - nextElementSibling returns the **next HTML element node** (ignores text nodes)
+        // - previousElementSibling returns the **previous HTML element node**
+        // - parentElement gives the direct parent element of the selected node
+
+        // ------------------- Nodes -------------------
+        // childNodes includes text nodes (line breaks, spaces, comments)
+        console.log("All child nodes (with text):", parent.childNodes);
+    </script>
+</body>
+
+</html>
