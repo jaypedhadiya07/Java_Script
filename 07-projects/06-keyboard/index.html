@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event KeyCodes</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem;
+            gap: 0.5rem;
+            border-bottom: solid 1px #aaa;
+            background-color: #eee;
+        }
+
+        nav a {
+            display: inline-block;
+            min-width: 9rem;
+            padding: 0.5rem;
+            border-radius: 0.2rem;
+            border: solid 1px rgb(22, 22, 22);
+            text-align: center;
+            text-decoration: none;
+            color: #1b1b1b;
+        }
+
+        nav a[aria-current='page'] {
+            color: #000;
+            background-color: #d4d4d4;
+        }
+
+        /* Table styling */
+        table,
+        th,
+        td {
+            border: 1px solid #e7e7e7;
+        }
+
+        /* Full-screen container */
+        .project {
+            background-color: #1c1c1c;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 100vh;
+        }
+
+        /* Key display styling */
+        .color {
+            color: aliceblue;
+            font-size: 40px;
+            display: flex;
+            flex-direction: row;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="../index.html" aria-current="page">Home</a>
+        <a target="_blank" href="https://www.youtube.com/@chaiaurcode">Youtube channel</a>
+    </nav>
+
+    <div class="project">
+        <div id="insert">
+            <div class="key">Press any key and watch magic</div>
+        </div>
+    </div>
+
+    <script>
+        const insert = document.getElementById('insert');
+
+        // Listen for key presses and display key info dynamically
+        window.addEventListener('keydown', (e) => {
+            insert.innerHTML = `
+                <div class="color">
+                    <table cellspacing="10" cellpadding="50">
+                        <tr>
+                            <th>Key</th>
+                            <th>KeyCode</th>
+                            <th>Code</th>
+                        </tr>
+                        <tr>
+                            <td>${e.key === " " ? "Space" : e.key}</td>
+                            <td>${e.keyCode}</td> <!-- keyCode is deprecated, use e.code for modern browsers -->
+                            <td>${e.code}</td>
+                        </tr>
+                    </table>
+                </div>
+            `;
+        });
+    </script>
+</body>
+
+</html>
