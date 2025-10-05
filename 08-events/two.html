@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start / Stop Timer Example</title>
+</head>
+
+<body>
+    <h1>JAY</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+
+    <script>
+        /*
+         * -----------------------------
+         *  TIMER DEMONSTRATION
+         * -----------------------------
+         * This script demonstrates:
+         * 1. How to use setTimeout() and clearTimeout() — one-time delay
+         * 2. How to use setInterval() and clearInterval() — repeated execution
+         * 
+         * The user can start and stop both types of timers using buttons.
+         */
+
+        // Get references to buttons
+        const startBtn = document.querySelector("#start");
+        const stopBtn = document.querySelector("#stop");
+
+        /*
+         * -----------------------------
+         *  Example 1: setTimeout()
+         * -----------------------------
+         * Uncomment this section to test a one-time delay that changes the <h1> text.
+         */
+
+        // let timeoutId; // store timeout reference for later cancellation
+        // const changeName = function () {
+        //     document.querySelector('h1').innerHTML = "Yash"; // change heading text
+        // }; 
+        //
+        // startBtn.addEventListener("click", () => {
+        //     // Starts a one-time timer that runs after 2 seconds
+        //     timeoutId = setTimeout(changeName, 2000);
+        // });
+        //
+        // stopBtn.addEventListener("click", () => {
+        //     // Cancels the timeout before it executes
+        //     clearTimeout(timeoutId);
+        // });
+
+
+        /*
+         * -----------------------------
+         *  Example 2: setInterval()
+         * -----------------------------
+         * The active section below demonstrates how to run a function repeatedly
+         * at a fixed time interval until manually stopped.
+         */
+
+        let intervalId; // will hold the interval reference
+
+        // Function to be executed repeatedly by setInterval()
+        const sayData = function (msg) {
+            console.log(msg, "123"); // logs every second
+        };
+
+        // Start button handler: begin interval execution
+        startBtn.addEventListener('click', () => {
+            // setInterval(callback, delay(ms), optionalArgs)
+            // Passing "hii" as the argument to sayData()
+            intervalId = setInterval(sayData, 1000, "hii");
+            console.log("Interval started...");
+        });
+
+        // Stop button handler: stop the interval execution
+        stopBtn.addEventListener('click', () => {
+            clearInterval(intervalId);
+            console.log("Interval stopped.");
+        });
+
+    </script>
+</body>
+
+</html>
