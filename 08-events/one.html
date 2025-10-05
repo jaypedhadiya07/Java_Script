@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Handling & Image Removal Demo</title>
+</head>
+
+<body style="background-color: rgb(242, 187, 242);">
+    <h2 style="color: black;">Amazing Image Gallery</h2>
+
+    <div>
+        <ul id="images">
+            <!-- Each <li> contains an image; each image has a unique ID -->
+            <li>
+                <img width="250px" style="border-radius: 15px;"
+                    src="https://images.pexels.com/photos/29319296/pexels-photo-29319296/free-photo-of-detail-of-vatican-city-ceiling-frescos-with-art.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+                    alt="Artistic ceiling fresco" id="img1">
+            </li>
+            <li>
+                <img width="250px" style="border-radius: 15px;"
+                    src="https://images.pexels.com/photos/27553420/pexels-photo-27553420/free-photo-of-a-table-setting-with-white-plates-and-gold-place-settings.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+                    alt="Elegant table setup" id="img2">
+            </li>
+            <li>
+                <img width="250px" style="border-radius: 15px;"
+                    src="https://images.pexels.com/photos/30241292/pexels-photo-30241292/free-photo-of-elegant-parisian-street-with-classic-architecture.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+                    alt="Parisian street architecture" id="img3">
+            </li>
+            <li>
+                <img width="250px" style="border-radius: 15px;"
+                    src="https://images.pexels.com/photos/4346306/pexels-photo-4346306.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+                    alt="Landscape with nature" id="img4">
+            </li>
+            <li>
+                <img width="250px" style="border-radius: 15px;"
+                    src="https://images.pexels.com/photos/30352309/pexels-photo-30352309/free-photo-of-majestic-mount-fuji-framed-by-autumn-leaves.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+                    alt="Mount Fuji autumn scene" id="img5">
+            </li>
+            <li>
+                <!-- Example external link to demonstrate event prevention -->
+                <a href="https://google.com" id="google" style="color: aliceblue;">Google</a>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        /*
+         * -----------------------------
+         *  EVENT HANDLING EXAMPLES
+         * -----------------------------
+         * Below are different methods (commented out) to handle DOM events
+         * such as click listeners, event propagation, and prevention.
+         */
+
+        // ❌ Old-school approach (not recommended for modern use)
+        // document.getElementById('img3').onclick = function () {
+        //     alert("img3 clicked");
+        // }
+
+        // ✅ Modern approach using addEventListener()
+
+        // Example: prevent default behavior & stop propagation
+        // document.getElementById('google').addEventListener('click', function (e) {
+        //     e.preventDefault(); // stops the link from navigating to Google
+        //     e.stopPropagation(); // stops the event from bubbling up
+        // })
+
+        /*
+         * Event Bubbling vs Capturing:
+         * ----------------------------
+         * - Bubbling (default): Event goes from target → parent → ancestor
+         * - Capturing: Event goes from ancestor → parent → target
+         * 
+         * You can toggle between bubbling and capturing by changing the
+         * third parameter of addEventListener():
+         *   - false → bubbling (default)
+         *   - true → capturing
+         */
+
+        // Example demonstrating bubbling phase
+        // document.getElementById('images').addEventListener('click', function (e) {
+        //     console.log("Click inside the UL (bubbling phase)");
+        // }, false);
+        // document.getElementById('img3').addEventListener('click', function (e) {
+        //     console.log("Image 3 clicked");
+        // }, false);
+
+        // Example demonstrating capturing phase
+        // document.getElementById('images').addEventListener('click', function (e) {
+        //     console.log("Click inside the UL (capturing phase)");
+        // }, true);
+        // document.getElementById('img3').addEventListener('click', function (e) {
+        //     console.log("Image 3 clicked");
+        // }, true);
+
+        // Example: stopPropagation() to block bubbling
+        // document.getElementById('images').addEventListener('click', function (e) {
+        //     console.log("Click inside UL");
+        // }, false);
+        // document.getElementById('img3').addEventListener('click', function (e) {
+        //     console.log("Image 3 clicked");
+        //     e.stopPropagation(); // stops event from reaching UL
+        // }, false);
+
+        /*
+         * -----------------------------
+         *  EVENT DELEGATION EXAMPLE
+         * -----------------------------
+         * Instead of attaching a separate listener to each <img>,
+         * we attach one listener to their parent <ul>.
+         * 
+         * Benefits:
+         * - Performance: only one listener for many elements
+         * - Dynamically added elements also get handled automatically
+         */
+
+        document.querySelector('#images').addEventListener('click', (e) => {
+
+            // Logs which element triggered the event
+            console.log("Clicked element tag:", e.target.tagName);
+
+            // Proceed only if the clicked element is an <img>
+            if (e.target.tagName === "IMG") {
+                console.log("Removing image with ID:", e.target.id);
+
+                // Access the <li> element wrapping the clicked <img>
+                let removeIt = e.target.parentNode;
+
+                // ✅ Modern & clean way to remove the <li> element
+                removeIt.remove();
+
+                // Alternative (older method):
+                // removeIt.parentNode.removeChild(removeIt);
+            }
+        });
+
+    </script>
+</body>
+
+</html>
