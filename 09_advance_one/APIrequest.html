@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XMLHttpRequest Example</title>
+</head>
+
+<body style="background-color: black; color: aliceblue;">
+    <h1>XMLHttpRequest ReadyState Reference</h1>
+    <ul>
+        <li>0 UNSENT: Client has been created. open() not called yet.</li>
+        <li>1 OPENED: open() has been called.</li>
+        <li>2 HEADERS_RECEIVED: send() has been called, and headers and status are available.</li>
+        <li>3 LOADING: Downloading; responseText holds partial data.</li>
+        <li>4 DONE: The operation is complete.</li>
+    </ul>
+
+    <script>
+        // URL to fetch user data from GitHub API
+        const url = "https://api.github.com/users/jaypedhadiya07";
+
+        // Create a new XMLHttpRequest
+        const xhr = new XMLHttpRequest();
+
+        // Initialize a GET request
+        xhr.open('GET', url);
+
+        // Monitor changes in readyState
+        xhr.onreadystatechange = function () {
+            console.log("ReadyState:", xhr.readyState);
+
+            // When the request is complete
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    // Parse JSON response
+                    const data = JSON.parse(this.responseText);
+                    const body = document.querySelector("body")
+                    const p = document.createElement("p")
+                    p.innerHTML = data.login
+                    body.appendChild(p)
+                    console.log("GitHub Login:", data.login);
+                } else {
+                    console.error("Request failed with status:", xhr.status);
+                }
+            }
+        };
+
+        // Send the request
+        xhr.send();
+    </script>
+</body>
+
+</html>
