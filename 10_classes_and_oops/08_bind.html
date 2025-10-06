@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Class Simulation</title>
+</head>
+
+<body>
+    <button>Click</button>
+
+    <script>
+        /**
+         * Class representing a basic simulation of React-like behavior.
+         * Demonstrates:
+         *  - Event binding using `this` context.
+         *  - Using class constructors to attach event listeners.
+         *  - Difference between bound and unbound `this` in JavaScript.
+         */
+        class React {
+            constructor() {
+                // Library metadata (for demonstration)
+                this.Library = "React"
+                this.Server = "https://localhost:3000"
+
+                /**
+                 * Selecting the <button> element from the DOM
+                 * and binding the event listener.
+                 * 
+                 * `bind(this)` ensures that inside the event handler,
+                 * `this` refers to the class instance instead of the <button> element.
+                 */
+                document
+                    .querySelector("button")
+                    .addEventListener("click", this.onHandleSubmit.bind(this))
+            }
+
+            /**
+             * Event handler that executes when the button is clicked.
+             * Logs key information to the console to demonstrate context binding.
+             */
+            onHandleSubmit() {
+                console.log("✅ Button was clicked!");
+                console.log("🌐 Connected Server:", this.Server); // Accesses class property (works only with .bind)
+                console.log("🔍 Current Context (`this`):", this); // Logs the class instance instead of the button
+            }
+        }
+
+        /**
+         * Creating an instance of the React class automatically:
+         *  - Initializes class properties.
+         *  - Binds the button click event to the handler.
+         */
+        const app = new React()
+    </script>
+</body>
+
+</html>
