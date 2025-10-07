@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lexical Scope and Closures</title>
+</head>
+
+<body style="background-color: black;">
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
+
+    <script>
+        // -------------------------------------------------------------
+        // Example 1: Lexical Scope
+        // -------------------------------------------------------------
+        function lexicalScope() {
+            let name = "JavaScript" // variable declared in parent scope
+
+            function innerFunction() {
+                let innerVariable = "Python"
+                console.log(name) // Accessible due to lexical scoping
+            }
+
+            // console.log(innerVariable); // Not accessible (out of scope)
+
+            function innerFunction2() {
+                // console.log(innerVariable); // Error - defined in sibling scope
+                console.log(name) // Still accessible - lexical scope
+            }
+
+            innerFunction()
+            innerFunction2()
+        }
+
+        lexicalScope() // Demonstrates how nested functions access outer variables
+
+
+
+        // -------------------------------------------------------------
+        // Example 2: Closures
+        // -------------------------------------------------------------
+        function closures() {
+            let name = "AIML"
+
+            // Inner function retains access to outer variable (name)
+            function innerFunction() {
+                console.log(name)
+            }
+
+            // Returning inner function creates a closure —
+            // the function "remembers" its original lexical scope even after the outer function ends
+            return innerFunction
+        }
+
+        let closureExample = closures() // returns the inner function
+        closureExample() // Logs "AIML" — closure preserves the variable reference
+    </script>
+
+
+
+    <!-- -------------------------------------------------------------
+         Example 3: Real-World Use Case of Closures (Dynamic Event Handlers)
+         ------------------------------------------------------------- -->
+    <script>
+        // Manual way (repetitive)
+        // document.querySelector("#orange").onclick = function() {
+        //     document.body.style.backgroundColor = "orange"
+        // }
+        // document.querySelector("#green").onclick = function() {
+        //     document.body.style.backgroundColor = "green"
+        // }
+
+        // ✅ Cleaner way using closures
+        // The outer function accepts a color argument,
+        // and returns an inner function that remembers that color.
+        function colorChanger(color) {
+            // Return a new function that changes background color
+            return function () {
+                document.body.style.backgroundColor = color
+            }
+        }
+
+        // Each button gets its own closure with a different "color" reference
+        document.querySelector("#orange").onclick = colorChanger("orange")
+        document.querySelector("#green").onclick = colorChanger("green")
+    </script>
+
+</body>
+
+</html>
