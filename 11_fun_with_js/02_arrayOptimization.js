@@ -15,7 +15,7 @@
 // let array = [];
 // %DebugPrint(array);
 // Output:
-PS C:\Users\Jay\OneDrive\Desktop\js_fun> C:\Users\Jay\.jsvu\bin\v8-debug.cmd --allow-natives-syntax   
+/*PS C:\Users\Jay\OneDrive\Desktop\js_fun> C:\Users\Jay\.jsvu\bin\v8-debug.cmd --allow-natives-syntax   
 >> 
 V8 version 14.3.45
 d8> let arry = []
@@ -50,7 +50,7 @@ DebugPrint: 0x3ee0084941d: [JSArray]
  - construction counter: 0
 
 []
-d8>
+d8>*/
 
 // -------------------------------------------------------------
 // Packed vs. Holey Arrays
